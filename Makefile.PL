@@ -15,6 +15,9 @@ requires 'SQL::Translator';
 requires 'Text::MicroTemplate::DataSection';
 requires 'String::CamelCase';
 
+requires 'DBIx::Class';
+requires 'SQL::Translator';
+
 tests 't/*.t';
 author_tests 'xt';
 
