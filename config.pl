@@ -1,4 +1,5 @@
 return {
+    default_view    => 'MT',
     database => [
         'dbi:mysql:jobeet', 'root', '',
          {
