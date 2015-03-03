@@ -7,7 +7,6 @@ sub index :Path {
     my ($self, $c) = @_;
 
     $c->stash->{categories} = models('Schema::Category')->get_with_jobs;
-#    $c->stash->{jobs} = models('Schema::Job')->get_active_jobs;
 }
 
 # /job/{job_id} （詳細）

@@ -6,10 +6,15 @@ use parent 'Jobeet::Schema::ResultBase';
 
 sub get_active_jobs {
     my $self = shift;
+    my $attr = shift || {};
+
+    $attr->{rows} ||= 10;
 
     $self->jobs(
         { expires_at => { '>=', models('Schema')->now } },
-        { order_by => { -desc => 'created_at' } }
+        {   order_by => { -desc => 'created_at' },
+            rows     => $attr->{rows},
+        }
     );
 }
 
