@@ -1,3 +1,4 @@
+my $home = Jobeet::Models->get('home');
 return {
     default_view    => 'MT',
     active_days     => 30,
@@ -10,4 +11,8 @@ return {
              on_connect_do     => ['SET NAMES utf8'],
          },
     ],
+    cache => {
+        share_file     => $home->file('tmp', 'cache')->stringify,
+        unlink_on_exit => 0,
+    },
 };
