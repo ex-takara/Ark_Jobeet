@@ -4,7 +4,7 @@ use warnings;
 use parent 'DBIx::Class::Schema';
 use DateTime;
 
-our $VERSION = '0';
+our $VERSION = '2';
 
 __PACKAGE__->load_namespaces;
 
