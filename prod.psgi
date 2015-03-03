@@ -1,17 +1,17 @@
 use lib 'lib';
 
 use Plack::Builder;
-use jobeet;
-use jobeet::Models;
+use Jobeet;
+use Jobeet::Models;
 
-my $app = jobeet->new;
+my $app = Jobeet->new;
 $app->setup;
 
 # preload models
-my $models = jobeet::Models->instance;
+my $models = Jobeet::Models->instance;
 $models->load_all;
 
-my $app = jobeet->new;
+my $app = Jobeet->new;
 builder {
     $app->handler;
 };

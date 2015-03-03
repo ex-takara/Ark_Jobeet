@@ -1,7 +1,7 @@
 use inc::Module::Install;
 
-name 'jobeet';
-all_from 'lib/jobeet.pm';
+name 'Jobeet';
+all_from 'lib/Jobeet.pm';
 
 requires 'Path::AttrRouter';
 requires 'Ark';
@@ -24,4 +24,19 @@ author_tests 'xt';
 auto_set_repository;
 auto_include;
 
+{
+    my @tables = map {
+        my $module = $_;
+        (my $table = $module) =~ s/Jobeet::Schema::Result:://;
+        $table;
+    } Module::Find::findallmod('Jobeet::Schema::Result');
+
+    for my $table (@tables) {
+        register "Schema::${table}" => sub {
+            shift->get('Schema')->resultset($table);
+        };
+    }
+}
+
 WriteAll;
+

@@ -1,6 +1,6 @@
-package jobeet::Controller;
+package Jobeet::Controller;
 use Ark 'Controller';
-use jobeet::Models;
+use Jobeet::Models;
 
 # default 404 handler
 sub default :Path :Args {

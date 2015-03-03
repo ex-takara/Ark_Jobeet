@@ -1,9 +1,9 @@
 use Plack::Builder;
 use Plack::Middleware::Static;
 use lib 'lib';
-use jobeet;
+use Jobeet;
 
-my $app = jobeet->new;
+my $app = Jobeet->new;
 $app->setup;
 
 builder {

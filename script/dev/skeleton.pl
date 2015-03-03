@@ -4,7 +4,7 @@ use warnings;
 use utf8;
 use FindBin::libs;
 use autodie;
-use jobeet::Models;
+use Jobeet::Models;
 
 use Text::MicroTemplate::DataSectionEx;
 use String::CamelCase qw/camelize decamelize/;
@@ -35,13 +35,13 @@ $type = lc $type;
 
 my $config = +{
     controller  => {
-        dirs  => [qw/lib jobeet Controller/],
+        dirs  => [qw/lib Jobeet Controller/],
     },
     schema      => {
-        dirs => [qw/lib jobeet Schema Result/],
+        dirs => [qw/lib Jobeet Schema Result/],
     },
     view        => {
-        dirs => [qw/lib jobeet View/],
+        dirs => [qw/lib Jobeet View/],
     },
     module      => {
         dirs => [qw/lib/],
@@ -82,10 +82,10 @@ $dir->file($file)->openw->write($template);
 __DATA__
 
 @@ controller.mt
-package jobeet::Controller::<?= $name ?>;
+package Jobeet::Controller::<?= $name ?>;
 use Ark 'Controller';
 
-use jobeet::Models;
+use Jobeet::Models;
 has '+namespace' => default => '<?= $decamelized ?>';
 
 sub auto :Private {
@@ -99,15 +99,15 @@ sub index :Path :Args(0) {
 __PACKAGE__->meta->make_immutable;
 
 @@ schema.mt
-package jobeet::Schema::Result::<?= $name ?>;
+package Jobeet::Schema::Result::<?= $name ?>;
 
 use strict;
 use warnings;
 use utf8;
-use parent qw/jobeet::Schema::ResultBase/;
+use parent qw/Jobeet::Schema::ResultBase/;
 
-use jobeet::Schema::Types;
-use jobeet::Models;
+use Jobeet::Schema::Types;
+use Jobeet::Models;
 
 __PACKAGE__->table('<?= $decamelized ?>');
 __PACKAGE__->add_columns(
@@ -132,7 +132,7 @@ __PACKAGE__->set_primary_key('id');
 1;
 
 @@ view.mt
-package jobeet::View::<?= $name ?>;
+package Jobeet::View::<?= $name ?>;
 use Ark 'View::<?= $name ?>';
 
 __PACKAGE__->meta->make_immutable;
@@ -152,7 +152,7 @@ use strict;
 use warnings;
 use FindBin::libs;
 
-use jobeet::Models;
+use Jobeet::Models;
 use Getopt::Long;
 use Pod::Usage;
 

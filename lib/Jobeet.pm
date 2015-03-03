@@ -1,7 +1,7 @@
-package jobeet;
+package Jobeet;
 use Ark;
 
-use_model 'jobeet::Models';
+use_model 'Jobeet::Models';
 our $VERSION = '0.01';
 
 __PACKAGE__->meta->make_immutable;
@@ -10,15 +10,15 @@ __END__
 
 =head1 NAME
 
-jobeet -
+Jobeet -
 
 =head1 SYNOPSIS
 
-use jobeet;
+use Jobeet;
 
 =head1 DESCRIPTION
 
-jobeet is
+Jobeet is
 
 =head1 AUTHOR
 
