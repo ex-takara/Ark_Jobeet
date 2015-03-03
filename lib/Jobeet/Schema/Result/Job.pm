@@ -1,7 +1,16 @@
 package Jobeet::Schema::Result::Job;
 use strict;
 use warnings;
+use Jobeet::Models;
 use parent 'Jobeet::Schema::ResultBase';
+
+sub insert {
+    my $self = shift;
+
+    $self->expires_at( models('Schema')->now->add( days => 30 ) );
+    $self->next::method(@_);
+}
+
 
 __PACKAGE__->table('jobeet_job');
 
