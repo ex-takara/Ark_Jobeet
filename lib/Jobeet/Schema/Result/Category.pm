@@ -1,7 +1,17 @@
 package Jobeet::Schema::Result::Category;
 use strict;
 use warnings;
+use Jobeet::Models;
 use parent 'Jobeet::Schema::ResultBase';
+
+sub get_active_jobs {
+    my $self = shift;
+
+    $self->jobs(
+        { expires_at => { '>=', models('Schema')->now } },
+        { order_by => { -desc => 'created_at' } }
+    );
+}
 
 __PACKAGE__->table('jobeet_category');
 

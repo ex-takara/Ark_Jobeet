@@ -7,7 +7,7 @@ use parent 'Jobeet::Schema::ResultBase';
 sub insert {
     my $self = shift;
 
-    $self->expires_at( models('Schema')->now->add( days => 30 ) );
+    $self->expires_at( models('Schema')->now->add( days => models('conf')->{active_days} ) );
     $self->next::method(@_);
 }
 
